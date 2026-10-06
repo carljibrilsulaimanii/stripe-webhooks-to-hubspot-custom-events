@@ -353,7 +353,11 @@ received** with a green check, and each action shows **Done**, its **Outputs** a
 
 **8c. Replay a delivery without a new purchase.** In Stripe, open the event (Workbench
 → **Events**), find **Deliveries to webhook endpoints** and click **Resend** (wording
-may differ). Use it after you fix a workflow. If your code writes records, make it look
+may differ). To find the event from a payment instead, use Workbench → **Inspector**:
+paste the `pi_...` or `cs_...` id under **Inspecting**, open the **Events** tab, pick
+the event, and the right panel lists every delivery with its status code (**All ·
+Succeeded · Failed**). HubSpot's own Stripe sync shows there too, as **Deliveries to
+connected platforms**. Use it after you fix a workflow. If your code writes records, make it look
 records up first, so a resend updates instead of creating a duplicate.
 
 **8d.** On the Stripe destination's **Event deliveries** tab, every delivery should be
