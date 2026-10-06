@@ -25,7 +25,7 @@ guide covers both of HubSpot's setup wizards, the traps in each, and how to tell
 real error from the one on screen.
 
 **Worked example:** the
-[$0 Stripe Checkout → HubSpot sync](#related-repos) (separate repo) is built on the
+[$0 Stripe Checkout → HubSpot sync](#related-repos-stripe-beyond-hubspot-commerce) (separate repo) is built on the
 `checkout.session.completed` event set up here. It has the custom code that runs on the
 event; this repo covers the trigger.
 
@@ -79,7 +79,7 @@ What makes it hard:
 | [`README.md`](README.md) | This guide. The whole build is done in Stripe's and HubSpot's screens; there's no code to install. |
 
 The custom code that runs on these events lives in the repos that use them (see
-[Related repos](#related-repos)).
+[Related repos](#related-repos-stripe-beyond-hubspot-commerce)).
 
 ## Table of contents
 
@@ -97,7 +97,7 @@ The custom code that runs on these events lives in the repos that use them (see
 - [Troubleshooting](#troubleshooting)
 - [Limits](#limits)
 - [Security](#security)
-- [Related repos](#related-repos)
+- [Related repos: Stripe beyond HubSpot Commerce](#related-repos-stripe-beyond-hubspot-commerce)
 
 ## 1. Requirements
 
@@ -442,17 +442,20 @@ families unless you need them.
 - Use a **restricted** Stripe key in custom code, with read access to only what the
   code fetches.
 
-## Related repos
+## Related repos: Stripe beyond HubSpot Commerce
 
-- **$0 Stripe Checkout → HubSpot sync** (separate repo, link added when published):
-  the worked example for `checkout.session.completed`. Custom code that reads only the
-  session id, re-fetches the session with its line items, and writes a record, plus a
-  backfill for orders from before the webhook existed.
-- [hubspot-order-form-stripe-checkout-link-integration](https://github.com/carljibrilsulaimanii/hubspot-order-form-stripe-checkout-link-integration):
-  carries UTMs from a HubSpot order form through Stripe Checkout, using the same
-  Checkout Session ids.
-- [hubspot-capi-server-side-lead-and-purchase-conversions-meta-google](https://github.com/carljibrilsulaimanii/hubspot-capi-server-side-lead-and-purchase-conversions-meta-google):
-  sends Stripe purchases to Meta and Google from HubSpot workflows.
+This repo is one of a set of guides for taking Stripe payments without HubSpot
+Commerce, and for getting the Stripe data that HubSpot's native Stripe
+integration leaves out into HubSpot. Each one stands alone.
+
+| Repo | What it adds |
+|---|---|
+| [hubspot-order-form-stripe-checkout-link-integration](https://github.com/carljibrilsulaimanii/hubspot-order-form-stripe-checkout-link-integration) | A HubSpot order form that hands buyers to a Stripe Payment Link, and writes the UTMs back onto the payment record |
+| **stripe-webhooks-to-hubspot-custom-events** (this repo) | Any Stripe event into a HubSpot workflow through the "Webhook event is received" trigger, no middleware |
+| [hubspot-capi-server-side-lead-and-purchase-conversions-meta-google](https://github.com/carljibrilsulaimanii/hubspot-capi-server-side-lead-and-purchase-conversions-meta-google) | Stripe purchases sent server-side from HubSpot workflows to Meta and Google |
+| **$0 Stripe Checkout sync** (coming) | Free and 100%-off checkouts, which create no payment and never reach HubSpot |
+| **Product names on payment records** (coming) | Which product each Stripe payment was for, and routing buyers by product |
+| **Stripe test mode mirror** (coming) | Test payments in the same HubSpot object as live ones, so workflows can be tested without real charges |
 
 ---
 
