@@ -25,7 +25,7 @@ guide covers both of HubSpot's setup wizards, the traps in each, and how to tell
 real error from the one on screen.
 
 **Worked example:** the
-[$0 Stripe Checkout → HubSpot sync](#related-repos-stripe-beyond-hubspot-commerce) (separate repo) is built on the
+[hubspot-stripe-zero-dollar-checkout-sync](https://github.com/carljibrilsulaimanii/hubspot-stripe-zero-dollar-checkout-sync) is built on the
 `checkout.session.completed` event set up here. It has the custom code that runs on the
 event; this repo covers the trigger.
 
@@ -453,7 +453,7 @@ integration leaves out into HubSpot. Each one stands alone.
 | [hubspot-order-form-stripe-checkout-link-integration](https://github.com/carljibrilsulaimanii/hubspot-order-form-stripe-checkout-link-integration) | A HubSpot order form that hands buyers to a Stripe Payment Link, and writes the UTMs back onto the payment record |
 | **stripe-webhooks-to-hubspot-custom-events** (this repo) | Any Stripe event into a HubSpot workflow through the "Webhook event is received" trigger, no middleware |
 | [hubspot-capi-server-side-lead-and-purchase-conversions-meta-google](https://github.com/carljibrilsulaimanii/hubspot-capi-server-side-lead-and-purchase-conversions-meta-google) | Stripe purchases sent server-side from HubSpot workflows to Meta and Google |
-| **$0 Stripe Checkout sync** (coming) | Free and 100%-off checkouts, which create no payment and never reach HubSpot |
+| [hubspot-stripe-zero-dollar-checkout-sync](https://github.com/carljibrilsulaimanii/hubspot-stripe-zero-dollar-checkout-sync) | Free and 100%-off Stripe Checkout orders, which create no payment, written into a HubSpot custom object, plus a backfill |
 | **Product names on payment records** (coming) | Which product each Stripe payment was for, and routing buyers by product |
 | **Stripe test mode mirror** (coming) | Test payments in the same HubSpot object as live ones, so workflows can be tested without real charges |
 
